@@ -20,7 +20,6 @@ data "aws_ami" "Amazon_Linux" {
 resource "aws_launch_configuration" "capser_launch_configuration" {
   image_id = data.aws_ami.Amazon_Linux.image_id
   instance_type = "t2.nano"
-  associate_public_ip_address = true
 }
 
 output "Amazon_linux" {
