@@ -1,11 +1,5 @@
-locals {
-  aws_cred = jsondecode(file("credentials.json"))
-}
-
 provider "aws" {
   region = "us-west-1"
-  access_key = local.aws_cred.aws_access_id
-  secret_key = local.aws_cred.aws_secret_key
 }
 
 data "aws_ami" "Amazon_Linux" {
