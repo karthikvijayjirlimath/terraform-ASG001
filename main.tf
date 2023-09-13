@@ -18,11 +18,18 @@ data "aws_ami" "Amazon_Linux" {
 }
 
 resource "aws_launch_configuration" "capser_launch_configuration" {
+  name = "ASG002_launch_config"
   image_id = data.aws_ami.Amazon_Linux.image_id
   instance_type = "t2.nano"
+
+  metadata_options {
+    http_endpoint = "enabled"
+    http_tokens = "required"
+  }
+  
 }
 
-output "Amazon_linux" {
+output "Launch_configuration_name" {
   description = "Amazon Linux imageID"
   value = aws_launch_configuration.capser_launch_configuration.name
 }
